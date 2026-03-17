@@ -1,0 +1,10 @@
+agent/.venv
+client/node_modules
+client/dist
+__pycache__
+*.pyc
+*.log
+.git
+agent/.env
+server/.env
+.bedrock_agentcore*

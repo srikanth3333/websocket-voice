@@ -1,0 +1,9 @@
+client/node_modules/
+agent/.venv/
+__pycache__/
+*.pyc
+*.log
+.env
+agent/.env
+static/
+.bedrock_agentcore*

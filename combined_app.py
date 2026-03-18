@@ -137,9 +137,19 @@ async def run_bot(transport):
 
 @app.post("/start")
 async def start() -> Dict[Any, Any]:
+    # Railway
     public_domain = os.getenv("RAILWAY_PUBLIC_DOMAIN", "")
-    if public_domain:
+    # Fly.io
+    fly_app = os.getenv("FLY_APP_NAME", "")
+    # Manual override
+    custom_domain = os.getenv("PUBLIC_DOMAIN", "")
+
+    if custom_domain:
+        ws_url = f"wss://{custom_domain}/ws"
+    elif public_domain:
         ws_url = f"wss://{public_domain}/ws"
+    elif fly_app:
+        ws_url = f"wss://{fly_app}.fly.dev/ws"
     else:
         ws_url = "ws://localhost:8080/ws"
     return {"ws_url": ws_url}
